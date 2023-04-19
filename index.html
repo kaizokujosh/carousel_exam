@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Carousel</title>
+        <style>
+            .carousel img {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>My Carousel</h1>
+        <div class="carousel">
+            <img alt="First" src="https://placehold.co/350x200?text=1" />
+            <img alt="Second" src="https://placehold.co/350x200?text=2" />
+            <img alt="Third" src="https://placehold.co/350x200?text=3" />
+            <img alt="Fourth" src="https://placehold.co/350x200?text=4" />
+            <img alt="Fifth" src="https://placehold.co/350x200?text=5" />
+        </div>
+
+        <p id="demo"></p>
+        <script>
+        	var images = document.getElementsByTagName('img'); 
+
+            demo();
+  			
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            
+            async function demo() {
+            	while(true) { 
+                  for (let i = 0; i < images.length; i++) {
+                  	switch (images[i]) {
+                    	case images[0]:
+                        	images[i].style.display = "block";
+                       	break;
+                        case images[1]:
+                        	images[i-1].style.display = "none";
+                        	images[i].style.display = "block";
+                       	break;
+                        case images[2]:
+                        	images[i-1].style.display = "none";
+                        	images[i].style.display = "block";
+                       	break;
+                        case images[3]:
+                        	images[i-1].style.display = "none";
+                        	images[i].style.display = "block";
+                       	break;
+                        case images[4]:
+                        	images[i-1].style.display = "none";
+                        	images[i].style.display = "block";
+                       	break;	
+                    }
+                    await sleep(1000);
+                  }
+                  images[4].style.display = "none";
+               }
+            }
+        </script>
+    </body>
+</html>
